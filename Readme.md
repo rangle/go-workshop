@@ -11,6 +11,25 @@
   go build
   ./hello
   ```
+- compile `example2`
+  ```Bash
+  cd example2
+  go build
+  ./server
+  open http://localhost:8080
+  ```
+- compile `example3`
+  ```Bash
+  cd example3
+  go build
+  ./createimage
+  ```
+- compile `example4`
+  ```Bash
+  cd example4
+  go build
+  ./concurrency
+  ```
 
 ## References
 
