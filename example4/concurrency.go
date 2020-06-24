@@ -7,7 +7,7 @@ import (
 )
 
 // Finds the ore
-func finder(mine []string, oreChannel chan string) {
+func finder(mine []string, oreChannel chan<- string) { // send only channel
 	defer fmt.Println("closing finder go-routine")
 
 	for _, item := range mine { // range over mine till the channel is closed
@@ -19,7 +19,7 @@ func finder(mine []string, oreChannel chan string) {
 }
 
 // Ore Breaker
-func breaker(oreChannel chan string) chan string {
+func breaker(oreChannel <-chan string) chan string { // receive only channel
 	defer fmt.Println("closing breaker function")
 
 	minedOreChan := make(chan string)
@@ -38,7 +38,7 @@ func breaker(oreChannel chan string) chan string {
 
 
 // Smelts the ore
-func smelter(minedOreChan chan string, doneChan chan bool) {
+func smelter(minedOreChan <- chan string, doneChan chan<- bool) {
 	defer func() {
 		fmt.Println("closing smelter go-routine")
 	}()
