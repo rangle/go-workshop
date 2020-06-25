@@ -8,7 +8,8 @@ import (
 
 // Function to handle a single request
 func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+    // `fmt.Fprintf` formats according to a format specifier and writes to `w`
+    fmt.Fprintf(w, "Hi there, you are at %s!", r.URL.Path[1:])
 }
 
 func main() {
