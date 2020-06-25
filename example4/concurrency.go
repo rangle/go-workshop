@@ -38,9 +38,7 @@ func breaker(oreChannel <-chan string) chan string { // receive only channel
 
 // Smelts the ore
 func smelter(minedOreChan <-chan string, doneChan chan<- bool) {
-	defer func() {
-		fmt.Println("closing smelter go-routine")
-	}()
+	defer fmt.Println("closing smelter go-routine")
 
 	for minedOre := range minedOreChan { //read from oreChannel until close
 		fmt.Println("From Miner: ", minedOre)
@@ -59,6 +57,7 @@ func main() {
 	minedOreChan := breaker(oreChannel)
 	go smelter(minedOreChan, doneChan)
 
-	// block till done is called, once called the program will stop
+	// block till done is called, once called the program will run to completion
 	<-doneChan
+	fmt.Println("bye bye") // printed before the application closes
 }
