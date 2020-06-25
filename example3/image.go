@@ -1,15 +1,15 @@
 package main
 
 import (
-	"os"
-	"time"
-	"math/rand"
 	"image"
 	"image/color"
 	"image/png"
+	"math/rand"
+	"os"
+	"time"
 )
 
-func main()  {
+func main() {
 	width := 200
 	height := 200
 
@@ -26,12 +26,12 @@ func main()  {
 		uint8(rand.Intn(255)),
 		uint8(rand.Intn(255)),
 		uint8(rand.Intn(255)),
-		0xff }
+		0xff}
 	color2 := color.RGBA{
 		uint8(rand.Intn(255)),
 		uint8(rand.Intn(255)),
 		uint8(rand.Intn(255)),
-		0xff }
+		0xff}
 
 	// Set color for each pixel.
 	for x := 0; x < width; x++ {

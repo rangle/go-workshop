@@ -3,7 +3,7 @@ package main
 // Based on https://medium.com/@trevor4e/learning-gos-concurrency-through-illustrations-8c4aff603b3
 
 import (
-  "fmt"
+	"fmt"
 )
 
 // Finds the ore
@@ -24,7 +24,7 @@ func breaker(oreChannel <-chan string) chan string { // receive only channel
 
 	minedOreChan := make(chan string)
 
-	// spin of 
+	// spin of
 	go func() {
 		defer fmt.Println("closing anonymous go-routine in breaker")
 		for foundOre := range oreChannel { //read from oreChannel until close
@@ -36,9 +36,8 @@ func breaker(oreChannel <-chan string) chan string { // receive only channel
 	return minedOreChan
 }
 
-
 // Smelts the ore
-func smelter(minedOreChan <- chan string, doneChan chan<- bool) {
+func smelter(minedOreChan <-chan string, doneChan chan<- bool) {
 	defer func() {
 		fmt.Println("closing smelter go-routine")
 	}()
@@ -56,7 +55,7 @@ func main() {
 	doneChan := make(chan bool)
 	oreChannel := make(chan string)
 
-	go finder(theMine, oreChannel)	
+	go finder(theMine, oreChannel)
 	minedOreChan := breaker(oreChannel)
 	go smelter(minedOreChan, doneChan)
 
