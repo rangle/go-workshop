@@ -16,6 +16,7 @@
 
 .DS_STORE
 example1/hello
+example1.1/word-cli
 example2/server
 example3/createimage
 example3/image.png
